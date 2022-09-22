@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lieven Clement" />
+
+
+<title>1. Introduction: two group comparisons</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ESVCP Pre-Congress Session</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-chalkboard-teacher"></span>
+     
+    Lectures
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-intro.html">01-Intro</a>
+    </li>
+    <li>
+      <a href="02-ranktests.html">02-Rank Tests</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/statOmics/ESVCP22">
+    <span class="fab fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://statomics.github.io/">statOmics</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+<li role="separator" class="divider"></li>
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">1. Introduction: two group comparisons</h1>
+<h4 class="author">Lieven Clement</h4>
+<h4 class="date">statOmics, Ghent University (<a href="https://statomics.github.io" class="uri">https://statomics.github.io</a>)</h4>
+
+</div>
+
+
+<div id="learning-objectives" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Learning objectives</h1>
+<ol style="list-style-type: decimal">
+<li>In this introduction you will familiarize yourself with three important tasks of statistics</li>
+</ol>
+<ul>
+<li>Experimental design</li>
+<li>Data Exploration</li>
+<li>Estimation and statistical inference</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>You understand how the data, the estimated mean, standard deviation and conclusions of a statistical data analysis can change from experiment to experiment</li>
+</ol>
+</div>
+<div id="smelly-armpit-example" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Smelly armpit example</h1>
+<ul>
+<li><p>Smelly armpits are not caused by sweat itself. The smell is caused by specific micro-organisms belonging to the group of <em>Corynebacterium spp.</em> that metabolise sweat. Another group of abundant bacteria are the <em>Staphylococcus spp.</em>, these bacteria do not metabolise sweat in smelly compounds.</p></li>
+<li><p>The CMET-groep at Ghent University does research on transplanting the armpit microbiome to save people with smelly armpits.</p></li>
+<li><p>Proposed Therapy:</p>
+<ol style="list-style-type: decimal">
+<li>Remove armpit-microbiome with antibiotics</li>
+<li>Influence armpit microbiome with microbial transplant (<a href="https://youtu.be/9RIFyqLXdVw" class="uri">https://youtu.be/9RIFyqLXdVw</a>)</li>
+</ol></li>
+</ul>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p>Experiment:</p>
+<ul>
+<li>20 subjects with smelly armpits are attributed to one of two treatment groups</li>
+<li>placebo (only antibiotics)</li>
+<li>transplant (antibiotics followed by microbial transplant).</li>
+<li>The microbiome is sampled 6 weeks upon the treatment.</li>
+<li>The relative abundance of <em>Staphylococcus spp.</em> on <em>Corynebacterium spp.</em> + <em>Staphylococcus spp.</em> in the microbiome is measured via DGGE (<em>Denaturing Gradient Gel Electrophoresis</em>).</li>
+</ul></li>
+</ul>
+<hr />
+<div id="import-the-data" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Import the data</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="st">&quot;https://raw.githubusercontent.com/GTPB/PSLS20/master/data/armpit.csv&quot;</span>)</span></code></pre></div>
+<pre><code> [1] &quot;trt,rel&quot;                       &quot;placebo,54.99207606973059&quot;    
+ [3] &quot;placebo,31.84466019417476&quot;     &quot;placebo,41.09947643979057&quot;    
+ [5] &quot;placebo,59.52063914780293&quot;     &quot;placebo,63.573407202216075&quot;   
+ [7] &quot;placebo,41.48648648648649&quot;     &quot;placebo,30.44041450777202&quot;    
+ [9] &quot;placebo,42.95676429567643&quot;     &quot;placebo,41.7391304347826&quot;     
+[11] &quot;placebo,33.896515311510036&quot;    &quot;transplant,57.218124341412015&quot;
+[13] &quot;transplant,72.50900360144058&quot;  &quot;transplant,61.89258312020461&quot; 
+[15] &quot;transplant,56.690140845070424&quot; &quot;transplant,76&quot;                
+[17] &quot;transplant,71.7357910906298&quot;   &quot;transplant,57.757296466973884&quot;
+[19] &quot;transplant,65.1219512195122&quot;   &quot;transplant,67.53424657534246&quot; 
+[21] &quot;transplant,77.55359394703657&quot; </code></pre>
+<p>The file is comma separated and in tidy format</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/GTPB/PSLS20/master/data/armpit.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ap</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["trt"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rel"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"placebo","2":"54.99208"},{"1":"placebo","2":"31.84466"},{"1":"placebo","2":"41.09948"},{"1":"placebo","2":"59.52064"},{"1":"placebo","2":"63.57341"},{"1":"placebo","2":"41.48649"},{"1":"placebo","2":"30.44041"},{"1":"placebo","2":"42.95676"},{"1":"placebo","2":"41.73913"},{"1":"placebo","2":"33.89652"},{"1":"transplant","2":"57.21812"},{"1":"transplant","2":"72.50900"},{"1":"transplant","2":"61.89258"},{"1":"transplant","2":"56.69014"},{"1":"transplant","2":"76.00000"},{"1":"transplant","2":"71.73579"},{"1":"transplant","2":"57.75730"},{"1":"transplant","2":"65.12195"},{"1":"transplant","2":"67.53425"},{"1":"transplant","2":"77.55359"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<hr />
+</div>
+<div id="data-exploration-and-descriptive-statistics" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Data Exploration and Descriptive Statistics</h2>
+<ul>
+<li>Data exploration is extremely important to get insight in the data.</li>
+<li>It is often underrated and overlooked.</li>
+</ul>
+<div id="descriptive-statistics" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Descriptive statistics</h3>
+<p>We first summarize the data and calculate the mean, standard deviation, number of observations and standard error and store the result in an object apRelSum via <code>apRelSum&lt;-</code></p>
+<ol style="list-style-type: decimal">
+<li>We pipe the <code>ap</code> dataframe to the group_by function to group the data by treatment trt <code>group_by(trt)</code></li>
+<li>We pipe the result to the <code>summarize</code> function to summarize the “rel” variable and calculate the mean, standard deviation and the number of observations</li>
+<li>We pipe the result to the <code>mutate</code> function to make a new variable in the data frame <code>se</code> for which we calculate the standard error</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>apRelSum <span class="ot">&lt;-</span> ap <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trt) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>apRelSum</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["trt"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"placebo","2":"44.15496","3":"11.543251","4":"10","5":"3.650297"},{"1":"transplant","2":"66.40127","3":"7.880176","4":"10","5":"2.491930"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<hr />
+</div>
+<div id="plots" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Plots</h3>
+<p>We will use ggplot2 to make our plots. With the ggplot2 library we can easily build plots by adding layers.</p>
+<div id="barplot" class="section level4" number="2.2.2.1">
+<h4><span class="header-section-number">2.2.2.1</span> barplot</h4>
+<ol style="list-style-type: decimal">
+<li><p>We pipe our summarized data to the <code>ggplot</code> function and we select the treatment variable trt and the variable mean for plotting <code>aes(x=trt,y=mean)</code></p></li>
+<li><p>We make a barplot based on this data using the <code>geom_bar</code> function. The statistic is <code>stat="identity"</code> because the bar height should be equal the value for the mean of the relative abundance.</p></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>apRelSum <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<ul>
+<li>Is this plot informative??</li>
+</ul>
+<hr />
+<p>We will now add standard errors to the plot using <code>geom_errorbar</code> function and specify the minimum and maximum value for of the error bar, the width command is used to set the width of the error bar smaller than the width of the bar.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>apRelSum <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> se, <span class="at">ymax =</span> mean <span class="sc">+</span> se), <span class="at">width =</span> .<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<ul>
+<li>Is this plot informative??</li>
+</ul>
+<hr />
+</div>
+<div id="boxplots" class="section level4" number="2.2.2.2">
+<h4><span class="header-section-number">2.2.2.2</span> boxplots</h4>
+<p>I consider barplots to be bad plots</p>
+<ul>
+<li>They are not informative</li>
+<li>They just visualize a two point summary of the data. It is better to do this in a table</li>
+<li>They use a lot of space (e.g. from zero up to the minimum relative abundance) where no data are present.</li>
+</ul>
+<p>It is better to get a view on the distribution of the data. We can use a boxplot for this purpose. We first explain what a boxplot.</p>
+<hr />
+<p><img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<hr />
+<p>We will now make a boxplot for the ap data</p>
+<ol style="list-style-type: decimal">
+<li>We pipe the <code>ap</code> dataframe to the ggplot command</li>
+<li>We select the data with the command <code>ggplot(aes(x=trt,y=rel))</code></li>
+<li>We add a boxplot with the command <code>geom_boxplot()</code></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ap <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> rel)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<hr />
+<ul>
+<li><p>Note, that we do not have so many observations.</p></li>
+<li><p>It is always better to show the data as raw as possible!</p></li>
+</ul>
+<p>We will now add the raw data to the plot.</p>
+<ul>
+<li>Note that we set the outlier.shape=NA in the geom_boxplot function because because we will add all raw data anyway.</li>
+<li>We add the raw data using <code>geom_point(position="jitter")</code>, with the argument position=‘jitter’ we will add some random noise to the x coordinate so that we can see all data.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ap <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> rel)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>This is an informative plot!</p>
+<hr />
+<ul>
+<li><p>We observed an effect of the transplantation on the relative abundance of Staphylococcus.</p></li>
+<li><p>On average the relative relative abundance of Staphylococcus is 22.2% higher in the transplant group than in the placebo group.</p></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>apRelSum <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  diff <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>[1] 22.2</code></pre>
+<ul>
+<li>Is that effect large enough to conclude that the treatment works?</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="estimation-and-statistical-inference" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Estimation and statistical inference</h2>
+<ul>
+<li><p>Induction: With statistical inference we can generalize what we observe in the sample towards the population.</p></li>
+<li><p>The price that we have to pay: uncertainty on our conclusions!</p></li>
+<li><p>Indeed, we could not assess the effect of the treatment in the entire population but only on a small subset of the population</p></li>
+<li><p>So if we would repeat the experiment again</p>
+<ul>
+<li>we will select different people at random from the population</li>
+<li>the observed relative abundances will be slightly different</li>
+<li>the group means will be slightly different</li>
+<li>and that might result in different conclusions.</li>
+</ul></li>
+<li><p>With statistics we will control the probability to make false positive conclusions</p></li>
+<li><p>With experimental design we can determine the power to pick up an effect with a certain minimum effect size</p></li>
+</ul>
+<hr />
+<p>Falsification principle of Popper</p>
+<ul>
+<li><p>With data we cannot prove that the treatment works</p></li>
+<li><p>With data we can only reject a hypothesis or theory.</p></li>
+<li><p>With stats we can thus not prove that the treatment works.</p></li>
+<li><p>But stats will allow us to falcify the opposite hypothesis: how much evidence is there in the data against the assumption that there is no effect of the treatment?</p></li>
+</ul>
+<hr />
+<p>If there is no effect of the treatment</p>
+<ul>
+<li><p>then the relative abundance would follow the same distribution in both treatment arms</p></li>
+<li><p>we could thus have observed each observation in one of the groups.</p></li>
+<li><p>So under the null hypothesis of no effect we can permute the group labels.</p></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>apPerm <span class="ot">&lt;-</span> ap <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">trt=</span><span class="fu">sample</span>(trt))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>apPerm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> rel)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>apRelSumPerm <span class="ot">&lt;-</span> apPerm <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trt) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>apRelSumPerm</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["trt"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"placebo","2":"53.45732","3":"15.54010","4":"10","5":"4.914211"},{"1":"transplant","2":"57.09891","3":"14.88037","4":"10","5":"4.705586"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>apRelSumPerm <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> diff</span></code></pre></div>
+<pre><code>[1] 3.641594</code></pre>
+<p>We can repeat this again.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>apPerm <span class="ot">&lt;-</span> ap <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">trt=</span><span class="fu">sample</span>(trt))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>apPerm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> rel)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>apRelSumPerm <span class="ot">&lt;-</span> apPerm <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trt) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>apRelSumPerm</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["trt"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"placebo","2":"52.84766","3":"17.52968","4":"10","5":"5.543370"},{"1":"transplant","2":"57.70857","3":"12.24218","4":"10","5":"3.871318"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>apRelSumPerm <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> diff</span></code></pre></div>
+<pre><code>[1] 4.860905</code></pre>
+<ul>
+<li><p>If we do that many times we can estimate the distribution of average difference in relative abundance between both treatment groups under the assumption that there is no effect of the treatment on the relative abundance of staphylococcus</p></li>
+<li><p>i.e. under the assumption that the relative abundances follow the same distribution in both groups</p></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1025</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>nPerm <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> tStatPerm <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="cn">NA</span>,nPerm)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nPerm)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    apPerm <span class="ot">&lt;-</span> ap <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">trt=</span><span class="fu">sample</span>(trt))</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    apRelSumPerm  <span class="ot">&lt;-</span> apPerm <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(trt) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(rel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    diff[i] <span class="ot">&lt;-</span> apRelSumPerm <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> diff</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    seDiff <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>((apRelSumPerm<span class="sc">$</span>sd<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(apRelSumPerm<span class="sc">$</span>n<span class="dv">-1</span>)))<span class="sc">/</span><span class="fu">sum</span>(apRelSumPerm<span class="sc">$</span>n<span class="dv">-1</span>))<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="dv">1</span><span class="sc">/</span>apRelSumPerm<span class="sc">$</span>n))</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    tStatPerm[i] <span class="ot">&lt;-</span> diff[i]<span class="sc">/</span>seDiff</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(diff,<span class="at">geom=</span><span class="st">&quot;histogram&quot;</span>, <span class="at">bins=</span><span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept=</span> apRelSum <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> diff)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(apRelSum <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean) <span class="sc">%&gt;%</span> diff))</span></code></pre></div>
+<pre><code>[1] 1e-04</code></pre>
+<ul>
+<li><p>The permutations show that it is very unlikely to observe a difference in relative abundance of at least 22.2 by random chance if their would be no effect of the treatment.</p></li>
+<li><p>Only in 1 out of 10^{4} permutations we observe a difference that is at least as high as what we observed in our sample.</p></li>
+<li><p>So it is very unlikely to observe our dataset under the hypothesis that their is no effect of the treatment.</p></li>
+<li><p>We can thus conclude that there is an effect of the transplantation treatment on the relative abundance of staphylococcus in the armpit microbiome.</p></li>
+<li><p>In statistics we typically do not only look at the effect size: average difference in relative abundance between transplant and treatment group</p></li>
+<li><p>But we generally balance the effect size to its standard error, which is a measure for the uncertainty of the effect size estimate.</p></li>
+</ul>
+<p><span class="math display">\[
+T = \frac{\hat\Delta}{\text{se}_{\hat\Delta}}=\frac{\bar Y_t - \bar Y_p}{\text{se}_{\bar Y_t - \bar Y_p}}
+\]</span></p>
+<p>We can again look at the permutation distribution of this t-test statistic:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(<span class="at">tStatPerm=</span>tStatPerm) <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>tStatPerm)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span>..density..),<span class="at">bins=</span><span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> dt, <span class="at">args=</span><span class="fu">list</span>(<span class="at">df=</span><span class="fu">sum</span>(apRelSum<span class="sc">$</span>n<span class="dv">-1</span>)), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&#39;Student t&#39;</span>), <span class="at">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<ul>
+<li><p>If we compare it with a standard t-distribution with 18 degrees of freedom we observe that the permutation distribution nicely follows a t-distribution.</p></li>
+<li><p>This is because the data are approximately Normally distributed and because the variance in the two groups (j= 1, 2) are equal, i.e. </p></li>
+</ul>
+<p><span class="math display">\[
+Y_{ij} \sim N(\mu_j,\sigma^2)
+\]</span> Which we could verify using the boxplot and qqplots</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ap <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> rel)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ap <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> rel)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>trt)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<ul>
+<li><p>Note, that under these assumptions the distribution of the two groups can only differ according to the group mean.</p></li>
+<li><p>So we can interpret the null and alternative hypothesis in terms of a difference in group means.</p></li>
+</ul>
+<p><span class="math display">\[
+H_0: \mu_1=
+\mu_2 
+\text{ vs } H_1: \mu_1 \neq \mu_2
+\]</span></p>
+<p>and we can calculate the probability</p>
+<ul>
+<li>to observe an average difference in relative abundance of Staphylococcus between the placebo and the transplant group</li>
+<li>in a random experiment of the same size as ours</li>
+<li>under null hypothesis that there is on no effect of the treatment treatment using a two sample t-test.</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rel<span class="sc">~</span>trt,ap,<span class="at">var.equal=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>
+    Two Sample t-test
+
+data:  rel by trt
+t = -5.0334, df = 18, p-value = 8.638e-05
+alternative hypothesis: true difference in means between group placebo and group transplant is not equal to 0
+95 percent confidence interval:
+ -31.53191 -12.96072
+sample estimates:
+   mean in group placebo mean in group transplant 
+                44.15496                 66.40127 </code></pre>
+<p>So if we would repeat our experiment one million times we can expect in about 86 experiments an average difference in relative abundance of staphylococcus between the transplant and placebo group that is larger 22.2% by random change under the assumptions that</p>
+<ul>
+<li>there is no effect of the treatment</li>
+<li>the data are normally distributed</li>
+<li>the data in both groups have the same variance</li>
+</ul>
+<p>This shows that it is extremely unlikely to observe an effect size as large as what we observed in our sample by random change in an experiment like ours if their would be no effect of the treatment.</p>
+<p>Because we did the assumption that the data are normally distributed in both groups and have the same variance, we can conclude about the effect in terms of a difference in means between both groups!</p>
+<ul>
+<li><p>Note, that we typically refer to this probability as <code>p-value</code></p></li>
+<li><p>And that we typically reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p&lt;\alpha\)</span> with <span class="math inline">\(\alpha\)</span> the significance level.</p></li>
+<li><p>We often use <span class="math inline">\(\alpha = 0.05\)</span> so we tolerate a 5% probability on making a false positive conclusion, i.e. to conclude that there is an effect of the treatment while this is not the case.</p></li>
+<li><p>This is also referred to as the control of the Type I error (false positive conclusion) at the 5%-level.</p></li>
+<li><p>We can now formulate our conclusion</p></li>
+</ul>
+</div>
+<div id="conclusion" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Conclusion</h2>
+<p>The relative abundance of Staphylococcus in the microbiome of individuals with smelly armpits is 22.2% higher upon the transplant than upon the placebo treatment (p &lt;&lt; 0.001).</p>
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiMS4gSW50cm9kdWN0aW9uOiB0d28gZ3JvdXAgY29tcGFyaXNvbnMiCmF1dGhvcjogIkxpZXZlbiBDbGVtZW50IgpkYXRlOiAic3RhdE9taWNzLCBHaGVudCBVbml2ZXJzaXR5IChodHRwczovL3N0YXRvbWljcy5naXRodWIuaW8pIgotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFLCBjYWNoZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KAogIGluY2x1ZGUgPSBUUlVFLCBjb21tZW50ID0gTkEsIGVjaG8gPSBUUlVFLAogIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFLCBjYWNoZSA9IFRSVUUKKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgojIExlYXJuaW5nIG9iamVjdGl2ZXMgCgoxLiBJbiB0aGlzIGludHJvZHVjdGlvbiB5b3Ugd2lsbCBmYW1pbGlhcml6ZSB5b3Vyc2VsZiB3aXRoIHRocmVlIGltcG9ydGFudCB0YXNrcyBvZiBzdGF0aXN0aWNzIAoKICAtIEV4cGVyaW1lbnRhbCBkZXNpZ24KICAtIERhdGEgRXhwbG9yYXRpb24KICAtIEVzdGltYXRpb24gYW5kIHN0YXRpc3RpY2FsIGluZmVyZW5jZSAKCjIuIFlvdSB1bmRlcnN0YW5kIGhvdyB0aGUgZGF0YSwgdGhlIGVzdGltYXRlZCBtZWFuLCBzdGFuZGFyZCBkZXZpYXRpb24gYW5kIGNvbmNsdXNpb25zIG9mIGEgc3RhdGlzdGljYWwgZGF0YSBhbmFseXNpcyBjYW4gY2hhbmdlIGZyb20gZXhwZXJpbWVudCB0byBleHBlcmltZW50IAoKIyBTbWVsbHkgYXJtcGl0IGV4YW1wbGUKCi0gU21lbGx5IGFybXBpdHMgYXJlIG5vdCBjYXVzZWQgYnkgc3dlYXQgaXRzZWxmLiBUaGUgc21lbGwgaXMgY2F1c2VkIGJ5IHNwZWNpZmljIG1pY3JvLW9yZ2FuaXNtcyBiZWxvbmdpbmcgdG8gdGhlIGdyb3VwIG9mICpDb3J5bmViYWN0ZXJpdW0gc3BwLiogdGhhdCBtZXRhYm9saXNlIHN3ZWF0LgpBbm90aGVyIGdyb3VwIG9mIGFidW5kYW50IGJhY3RlcmlhIGFyZSB0aGUgKlN0YXBoeWxvY29jY3VzIHNwcC4qLCB0aGVzZSBiYWN0ZXJpYSBkbyBub3QgbWV0YWJvbGlzZSBzd2VhdCBpbiBzbWVsbHkgY29tcG91bmRzLgoKLSBUaGUgQ01FVC1ncm9lcCBhdCBHaGVudCBVbml2ZXJzaXR5IGRvZXMgcmVzZWFyY2ggb24gdHJhbnNwbGFudGluZyB0aGUgYXJtcGl0IG1pY3JvYmlvbWUgdG8gc2F2ZSBwZW9wbGUgd2l0aCBzbWVsbHkgYXJtcGl0cy4KCi0gUHJvcG9zZWQgVGhlcmFweToKICAJMS4gUmVtb3ZlIGFybXBpdC1taWNyb2Jpb21lIHdpdGggYW50aWJpb3RpY3MKICAgIDIuIEluZmx1ZW5jZSBhcm1waXQgbWljcm9iaW9tZSB3aXRoIG1pY3JvYmlhbCAgdHJhbnNwbGFudCAoaHR0cHM6Ly95b3V0dS5iZS85UklGeXFMWGRWdykKCgpgYGB7ciBvdXQud2lkdGg9JzgwJScsZmlnLmFzcD0uOCwgZmlnLmFsaWduPSdjZW50ZXInLGVjaG89RkFMU0V9CmlmICgicGkiICVpbiUgbHMoKSkgcm0oInBpIikKa29wdm9ldGVyIDwtIGZ1bmN0aW9uKHgsIHksIGFuZ2xlID0gMCwgbCA9IC4yLCBjZXguZG90ID0gLjUsIHBjaCA9IDE5LCBjb2wgPSAiYmxhY2siKSB7CiAgYW5nbGUgPC0gYW5nbGUgLyAxODAgKiBwaQogIHBvaW50cyh4LCB5LCBjZXggPSBjZXguZG90LCBwY2ggPSBwY2gsIGNvbCA9IGNvbCkKICBsaW5lcyhjKHgsIHggKyBsICogY29zKC1waSAvIDIgKyBhbmdsZSkpLCBjKHksIHkgKyBsICogc2luKC1waSAvIDIgKyBhbmdsZSkpLCBjb2wgPSBjb2wpCiAgbGluZXMoYyh4ICsgbCAvIDIgKiBjb3MoLXBpIC8gMiArIGFuZ2xlKSwgeCArIGwgLyAyICogY29zKC1waSAvIDIgKyBhbmdsZSkgKyBsIC8gNCAqIGNvcyhhbmdsZSkpLCBjKHkgKyBsIC8gMiAqIHNpbigtcGkgLyAyICsgYW5nbGUpLCB5ICsgbCAvIDIgKiBzaW4oLXBpIC8gMiArIGFuZ2xlKSArIGwgLyA0ICogc2luKGFuZ2xlKSksIGNvbCA9IGNvbCkKICBsaW5lcyhjKHggKyBsIC8gMiAqIGNvcygtcGkgLyAyICsgYW5nbGUpLCB4ICsgbCAvIDIgKiBjb3MoLXBpIC8gMiArIGFuZ2xlKSArIGwgLyA0ICogY29zKHBpICsgYW5nbGUpKSwgYyh5ICsgbCAvIDIgKiBzaW4oLXBpIC8gMiArIGFuZ2xlKSwgeSArIGwgLyAyICogc2luKC1waSAvIDIgKyBhbmdsZSkgKyBsIC8gNCAqIHNpbihwaSArIGFuZ2xlKSksIGNvbCA9IGNvbCkKICBsaW5lcyhjKHggKyBsICogY29zKC1waSAvIDIgKyBhbmdsZSksIHggKyBsICogY29zKC1waSAvIDIgKyBhbmdsZSkgKyBsIC8gMiAqIGNvcygtcGkgLyAyICsgcGkgLyA0ICsgYW5nbGUpKSwgYyh5ICsgbCAqIHNpbigtcGkgLyAyICsgYW5nbGUpLCB5ICsgbCAqIHNpbigtcGkgLyAyICsgYW5nbGUpICsgbCAvIDIgKiBzaW4oLXBpIC8gMiArIHBpIC8gNCArIGFuZ2xlKSksIGNvbCA9IGNvbCkKICBsaW5lcyhjKHggKyBsICogY29zKC1waSAvIDIgKyBhbmdsZSksIHggKyBsICogY29zKC1waSAvIDIgKyBhbmdsZSkgKyBsIC8gMiAqIGNvcygtcGkgLyAyIC0gcGkgLyA0ICsgYW5nbGUpKSwgYyh5ICsgbCAqIHNpbigtcGkgLyAyICsgYW5nbGUpLCB5ICsgbCAqIHNpbigtcGkgLyAyICsgYW5nbGUpICsgbCAvIDIgKiBzaW4oLXBpIC8gMiAtIHBpIC8gNCArIGFuZ2xlKSksIGNvbCA9IGNvbCkKfQoKcGFyKG1hciA9IGMoMCwgMCwgMCwgMCksIG1haSA9IGMoMCwgMCwgMCwgMCkpCnBsb3QoMCwgMCwgeGxhYiA9ICIiLCB5bGFiID0gIiIsIHhsaW0gPSBjKDAsIDEwKSwgeWxpbSA9IGMoMCwgMTApLCBjb2wgPSAwLCB4YXh0ID0gIm5vbmUiLCB5YXh0ID0gIm5vbmUiLCBheGVzID0gRkFMU0UpCnJlY3QoMCwgNiwgMTAsIDEwLCBib3JkZXIgPSAicmVkIiwgbHdkID0gMikKdGV4dCguNSwgOCwgInBvcHVsYXRpb24iLCBzcnQgPSA5MCwgY29sID0gInJlZCIsIGNleCA9IDIpCnN5bWJvbHMoMywgOCwgY2lyY2xlcyA9IDEuNSwgY29sID0gInJlZCIsIGFkZCA9IFRSVUUsIGZnID0gInJlZCIsIGluY2hlcyA9IEZBTFNFLCBsd2QgPSAyKQpzZXQuc2VlZCgzMzApCmdyaWQgPC0gc2VxKDAsIDEuMywgLjAxKQoKZm9yIChpIGluIDE6NTApCnsKICBhbmdsZTEgPC0gcnVuaWYobiA9IDEsIG1pbiA9IDAsIG1heCA9IDM2MCkKICBhbmdsZTIgPC0gcnVuaWYobiA9IDEsIG1pbiA9IDAsIG1heCA9IDM2MCkKICByYWRpdXMgPC0gc2FtcGxlKGdyaWQsIHByb2IgPSBncmlkXjIgKiBwaSAvIHN1bShncmlkXjIgKiBwaSksIHNpemUgPSAxKQogIGtvcHZvZXRlcigzICsgcmFkaXVzICogY29zKGFuZ2xlMSAvIDE4MCAqIHBpKSwgOCArIHJhZGl1cyAqIHNpbihhbmdsZTEgLyAxODAgKiBwaSksIGFuZ2xlID0gYW5nbGUyKQp9CnRleHQoNy41LCA4LCAiTWljcm9iaW9tZSBpbiBwb3B1bGF0aW9uIiwgY29sID0gInJlZCIsIGNleCA9IDEuMikKCnJlY3QoMCwgMCwgMTAsIDQsIGJvcmRlciA9ICJibHVlIiwgbHdkID0gMikKdGV4dCguNSwgMiwgInNhbXBsZSIsIHNydCA9IDkwLCBjb2wgPSAiYmx1ZSIsIGNleCA9IDIpCnN5bWJvbHMoMywgMiwgY2lyY2xlcyA9IDEuNSwgY29sID0gInJlZCIsIGFkZCA9IFRSVUUsIGZnID0gImJsdWUiLCBpbmNoZXMgPSBGQUxTRSwgbHdkID0gMikKZm9yIChpIGluIDA6MSkgewogIGZvciAoaiBpbiAwOjQpCiAgewogICAga29wdm9ldGVyKDIuMSArIGogKiAoMy45IC0gMi4xKSAvIDQsIDEuMSArIGkgLyAyLCBjb2wgPSAicHVycGxlIikKICB9Cn0KZm9yIChpIGluIDI6MykgewogIGZvciAoaiBpbiAwOjQpCiAgewogICAga29wdm9ldGVyKDIuMSArIGogKiAoMy45IC0gMi4xKSAvIDQsIDEuNiArIGkgLyAyLCBjb2wgPSAib3JhbmdlIikKICB9Cn0KdGV4dCg3LjUsIDIsICJNaWNyb2Jpb21lIGluIHNhbXBsZSIsIGNvbCA9ICJibHVlIiwgY2V4ID0gMS4yKQoKYXJyb3dzKDMsIDUuOSwgMywgNC4xLCBjb2wgPSAiYmxhY2siLCBsd2QgPSAzKQp0ZXh0KDEuNSwgNSwgIkVYUC4gREVTSUdOICgxKSIsIGNvbCA9ICJibGFjayIsIGNleCA9IDEuMikKdGV4dCg3LjUsIC41LCAiREFUQSBFWFBMT1JBVElPTiAmXG5ERVNDUklQVElWRSBTVEFUSVNUSUNTICgyKSIsIGNvbCA9ICJibGFjayIsIGNleCA9IDEuMikKYXJyb3dzKDcsIDQuMSwgNywgNS45LCBjb2wgPSAiYmxhY2siLCBsd2QgPSAzKQp0ZXh0KDguNSwgNSwgIkVTVElNQVRJT04gJlxuSU5GRVJFTkNFICgzKSIsIGNvbCA9ICJibGFjayIsIGNleCA9IDEuMikKYGBgCgoKLSBFeHBlcmltZW50OgoKICAgIC0gMjAgc3ViamVjdHMgd2l0aCBzbWVsbHkgYXJtcGl0cyBhcmUgYXR0cmlidXRlZCB0byBvbmUgb2YgdHdvIHRyZWF0bWVudCBncm91cHMKICAgIC0gcGxhY2VibyAob25seSBhbnRpYmlvdGljcykKICAgIC0gdHJhbnNwbGFudCAoYW50aWJpb3RpY3MgZm9sbG93ZWQgYnkgbWljcm9iaWFsIHRyYW5zcGxhbnQpLgogICAgLSBUaGUgbWljcm9iaW9tZSBpcyBzYW1wbGVkIDYgd2Vla3MgdXBvbiB0aGUgdHJlYXRtZW50LgogICAgLSBUaGUgcmVsYXRpdmUgYWJ1bmRhbmNlIG9mICpTdGFwaHlsb2NvY2N1cyBzcHAuKiBvbiAqQ29yeW5lYmFjdGVyaXVtIHNwcC4qICsgKlN0YXBoeWxvY29jY3VzIHNwcC4qIGluIHRoZSBtaWNyb2Jpb21lIGlzIG1lYXN1cmVkIHZpYSBER0dFICgqRGVuYXR1cmluZyBHcmFkaWVudCBHZWwgRWxlY3Ryb3Bob3Jlc2lzKikuCgotLS0KCiMjIEltcG9ydCB0aGUgZGF0YQpgYGB7cn0KcmVhZF9saW5lcygiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0dUUEIvUFNMUzIwL21hc3Rlci9kYXRhL2FybXBpdC5jc3YiKQpgYGAKClRoZSBmaWxlIGlzIGNvbW1hIHNlcGFyYXRlZCBhbmQgaW4gdGlkeSBmb3JtYXQKCmBgYHtyfQphcCA8LSByZWFkX2NzdigiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0dUUEIvUFNMUzIwL21hc3Rlci9kYXRhL2FybXBpdC5jc3YiKQphcApgYGAKCi0tLQoKIyMgRGF0YSBFeHBsb3JhdGlvbiBhbmQgRGVzY3JpcHRpdmUgU3RhdGlzdGljcwoKLSBEYXRhIGV4cGxvcmF0aW9uIGlzIGV4dHJlbWVseSBpbXBvcnRhbnQgdG8gZ2V0IGluc2lnaHQgaW4gdGhlIGRhdGEuCi0gSXQgaXMgb2Z0ZW4gdW5kZXJyYXRlZCBhbmQgb3Zlcmxvb2tlZC4KCiMjIyBEZXNjcmlwdGl2ZSBzdGF0aXN0aWNzCgpXZSBmaXJzdCBzdW1tYXJpemUgdGhlIGRhdGEgYW5kIGNhbGN1bGF0ZSB0aGUgbWVhbiwgc3RhbmRhcmQgZGV2aWF0aW9uLCBudW1iZXIgb2Ygb2JzZXJ2YXRpb25zIGFuZCBzdGFuZGFyZCBlcnJvciBhbmQgc3RvcmUgdGhlIHJlc3VsdCBpbiBhbiBvYmplY3QgYXBSZWxTdW0gdmlhIGBhcFJlbFN1bTwtYAoKMS4gV2UgcGlwZSB0aGUgYGFwYCBkYXRhZnJhbWUgdG8gdGhlIGdyb3VwX2J5IGZ1bmN0aW9uIHRvIGdyb3VwIHRoZSBkYXRhIGJ5IHRyZWF0bWVudCB0cnQgYGdyb3VwX2J5KHRydClgCjIuIFdlIHBpcGUgdGhlIHJlc3VsdCB0byB0aGUgYHN1bW1hcml6ZWAgZnVuY3Rpb24gdG8gc3VtbWFyaXplIHRoZSAicmVsIiB2YXJpYWJsZSBhbmQgY2FsY3VsYXRlIHRoZSBtZWFuLCBzdGFuZGFyZCBkZXZpYXRpb24gYW5kIHRoZSBudW1iZXIgb2Ygb2JzZXJ2YXRpb25zCjMuIFdlIHBpcGUgdGhlIHJlc3VsdCB0byB0aGUgYG11dGF0ZWAgZnVuY3Rpb24gdG8gbWFrZSBhIG5ldyB2YXJpYWJsZSBpbiB0aGUgZGF0YSBmcmFtZSBgc2VgIGZvciB3aGljaCB3ZSBjYWxjdWxhdGUgdGhlIHN0YW5kYXJkIGVycm9yCgoKYGBge3J9CmFwUmVsU3VtIDwtIGFwICU+JQogIGdyb3VwX2J5KHRydCkgJT4lCiAgc3VtbWFyaXplKAogICAgbWVhbiA9IG1lYW4ocmVsLCBuYS5ybSA9IFRSVUUpLAogICAgc2QgPSBzZChyZWwsIG5hLnJtID0gVFJVRSksCiAgICBuID0gbigpCiAgKSAlPiUKICBtdXRhdGUoc2UgPSBzZCAvIHNxcnQobikpCgphcFJlbFN1bQpgYGAKCi0tLQoKIyMjIFBsb3RzCgpXZSB3aWxsIHVzZSBnZ3Bsb3QyIHRvIG1ha2Ugb3VyIHBsb3RzLgpXaXRoIHRoZSBnZ3Bsb3QyIGxpYnJhcnkgd2UgY2FuIGVhc2lseSBidWlsZCBwbG90cyBieSBhZGRpbmcgbGF5ZXJzLgoKIyMjIyBiYXJwbG90CgoxLiBXZSBwaXBlIG91ciBzdW1tYXJpemVkIGRhdGEgdG8gdGhlIGBnZ3Bsb3RgIGZ1bmN0aW9uIGFuZCB3ZSBzZWxlY3QgdGhlIHRyZWF0bWVudCB2YXJpYWJsZSB0cnQgYW5kIHRoZSB2YXJpYWJsZSBtZWFuIGZvciBwbG90dGluZyBgYWVzKHg9dHJ0LHk9bWVhbilgCgoyLiBXZSBtYWtlIGEgYmFycGxvdCBiYXNlZCBvbiB0aGlzIGRhdGEgdXNpbmcgdGhlIGBnZW9tX2JhcmAgZnVuY3Rpb24uIFRoZSBzdGF0aXN0aWMgaXMgYHN0YXQ9ImlkZW50aXR5ImAgYmVjYXVzZSB0aGUgYmFyIGhlaWdodCBzaG91bGQgYmUgZXF1YWwgdGhlIHZhbHVlIGZvciB0aGUgbWVhbiBvZiB0aGUgcmVsYXRpdmUgYWJ1bmRhbmNlLgoKYGBge3J9CmFwUmVsU3VtICU+JQogIGdncGxvdChhZXMoeCA9IHRydCwgeSA9IG1lYW4pKSArCiAgZ2VvbV9iYXIoc3RhdCA9ICJpZGVudGl0eSIpCmBgYAoKLSBJcyB0aGlzIHBsb3QgaW5mb3JtYXRpdmU/PwoKLS0tCgpXZSB3aWxsIG5vdyBhZGQgc3RhbmRhcmQgZXJyb3JzIHRvIHRoZSBwbG90CnVzaW5nIGBnZW9tX2Vycm9yYmFyYCBmdW5jdGlvbiBhbmQgc3BlY2lmeSB0aGUgbWluaW11bSBhbmQgbWF4aW11bSB2YWx1ZSBmb3Igb2YgdGhlIGVycm9yIGJhciwgdGhlIHdpZHRoIGNvbW1hbmQgaXMgdXNlZCB0byBzZXQgdGhlIHdpZHRoIG9mIHRoZSBlcnJvciBiYXIgc21hbGxlciB0aGFuIHRoZSB3aWR0aCBvZiB0aGUgYmFyLgoKYGBge3J9CmFwUmVsU3VtICU+JQogIGdncGxvdChhZXMoeCA9IHRydCwgeSA9IG1lYW4pKSArCiAgZ2VvbV9iYXIoc3RhdCA9ICJpZGVudGl0eSIpICsKICBnZW9tX2Vycm9yYmFyKGFlcyh5bWluID0gbWVhbiAtIHNlLCB5bWF4ID0gbWVhbiArIHNlKSwgd2lkdGggPSAuMikKYGBgCgotIElzIHRoaXMgcGxvdCBpbmZvcm1hdGl2ZT8/CgotLS0KCiMjIyMgYm94cGxvdHMKCkkgY29uc2lkZXIgYmFycGxvdHMgdG8gYmUgYmFkIHBsb3RzCgotIFRoZXkgYXJlIG5vdCBpbmZvcm1hdGl2ZQotIFRoZXkganVzdCB2aXN1YWxpemUgYSB0d28gcG9pbnQgc3VtbWFyeSBvZiB0aGUgZGF0YS4gSXQgaXMgYmV0dGVyIHRvIGRvIHRoaXMgaW4gYSB0YWJsZQotIFRoZXkgdXNlIGEgbG90IG9mIHNwYWNlIChlLmcuIGZyb20gemVybyB1cCB0byB0aGUgbWluaW11bSByZWxhdGl2ZSBhYnVuZGFuY2UpIHdoZXJlIG5vIGRhdGEgYXJlIHByZXNlbnQuCgpJdCBpcyBiZXR0ZXIgdG8gZ2V0IGEgdmlldyBvbiB0aGUgZGlzdHJpYnV0aW9uIG9mIHRoZSBkYXRhLiBXZSBjYW4gdXNlIGEgYm94cGxvdCBmb3IgdGhpcyBwdXJwb3NlLgpXZSBmaXJzdCBleHBsYWluIHdoYXQgYSBib3hwbG90LgoKLS0tCgpgYGB7ciBmaWcuYWxpZ249J2NlbnRlcicsZWNobz1GQUxTRX0KZmVtIDwtIE5IQU5FUzo6TkhBTkVTICU+JQogIGZpbHRlcihHZW5kZXIgPT0gImZlbWFsZSIgJiAhaXMubmEoRGlyZWN0Q2hvbCkpICU+JQogIHNlbGVjdChEaXJlY3RDaG9sKQpib3hwbG90KGZlbSREaXJlY3RDaG9sLCB5bGFiID0gIkRpcmVjdCBjaG9sZXN0ZXJvbCIsIGNleC5sYWIgPSAxLjUsIGNleC5heGlzID0gMS41LCBjZXgubWFpbiA9IDEuNSkKcmFuZ2VDbCA8LSBxdWFudGlsZShmZW0kRGlyZWN0Q2hvbCwgYyguMjUsIC43NSkpICsgYygtMSwgMSkgKiBkaWZmKHF1YW50aWxlKGZlbSREaXJlY3RDaG9sLCBjKC4yNSwgLjc1KSkpICogMS41CmJveFlzIDwtIGMocmFuZ2UoZmVtJERpcmVjdENob2xbZmVtJERpcmVjdENob2wgPD0gcmFuZ2VDbFsyXSAmIGZlbSREaXJlY3RDaG9sID49IHJhbmdlQ2xbMV1dKSwgcXVhbnRpbGUoZmVtJERpcmVjdENob2wsIGMoLjI1LCAuNSwgLjc1KSksIHJhbmdlQ2xbMl0gKyAobWF4KGZlbSREaXJlY3RDaG9sKSAtIHJhbmdlQ2xbMl0pIC8gMikKdGV4dCgxLjMsIGJveFlzLCBsYWJlbHMgPSBjKCJ3aXNrZXIiLCAid2lza2VyIiwgIngyNSIsICJtZWRpYW4iLCAieDc1IiwgIm91dGxpZXJzIiksIHBvcyA9IDQsIGNleCA9IDEuMykKbGluZXMoYygxLjEsIDEuMywgMS4zLCAxLjEpLCBjKHJhbmdlQ2xbMl0sIHJhbmdlQ2xbMl0gKyAobWF4KGZlbSREaXJlY3RDaG9sKSAtIHJhbmdlQ2xbMl0pIC8gMiwgcmFuZ2VDbFsyXSArIChtYXgoZmVtJERpcmVjdENob2wpIC0gcmFuZ2VDbFsyXSkgLyAyLCBtYXgoZmVtJERpcmVjdENob2wpKSwgbHR5ID0gMikKYGBgCgotLS0KCldlIHdpbGwgbm93IG1ha2UgYSBib3hwbG90IGZvciB0aGUgYXAgZGF0YQoKMS4gV2UgcGlwZSB0aGUgYGFwYCBkYXRhZnJhbWUgdG8gdGhlIGdncGxvdCBjb21tYW5kCjIuIFdlIHNlbGVjdCB0aGUgZGF0YSB3aXRoIHRoZSBjb21tYW5kIGBnZ3Bsb3QoYWVzKHg9dHJ0LHk9cmVsKSlgCjMuIFdlIGFkZCBhIGJveHBsb3Qgd2l0aCB0aGUgY29tbWFuZCBgZ2VvbV9ib3hwbG90KClgCgpgYGB7cn0KYXAgJT4lCiAgZ2dwbG90KGFlcyh4ID0gdHJ0LCB5ID0gcmVsKSkgKwogIGdlb21fYm94cGxvdCgpCmBgYAoKLS0tCgotIE5vdGUsIHRoYXQgd2UgZG8gbm90IGhhdmUgc28gbWFueSBvYnNlcnZhdGlvbnMuCgotIEl0IGlzIGFsd2F5cyBiZXR0ZXIgdG8gc2hvdyB0aGUgZGF0YSBhcyByYXcgYXMgcG9zc2libGUhCgpXZSB3aWxsIG5vdyBhZGQgdGhlIHJhdyBkYXRhIHRvIHRoZSBwbG90LgoKLSBOb3RlIHRoYXQgd2Ugc2V0IHRoZSBvdXRsaWVyLnNoYXBlPU5BIGluIHRoZSBnZW9tX2JveHBsb3QgZnVuY3Rpb24gYmVjYXVzZSBiZWNhdXNlIHdlIHdpbGwgYWRkIGFsbCByYXcgZGF0YSBhbnl3YXkuCi0gV2UgYWRkIHRoZSByYXcgZGF0YSB1c2luZyBgZ2VvbV9wb2ludChwb3NpdGlvbj0iaml0dGVyIilgLCB3aXRoIHRoZSBhcmd1bWVudCBwb3NpdGlvbj0naml0dGVyJyB3ZSB3aWxsIGFkZCBzb21lIHJhbmRvbSBub2lzZSB0byB0aGUgeCBjb29yZGluYXRlIHNvIHRoYXQgd2UgY2FuIHNlZSBhbGwgZGF0YS4KCmBgYHtyfQphcCAlPiUKICBnZ3Bsb3QoYWVzKHggPSB0cnQsIHkgPSByZWwpKSArCiAgZ2VvbV9ib3hwbG90KG91dGxpZXIuc2hhcGUgPSBOQSkgKwogIGdlb21fcG9pbnQocG9zaXRpb24gPSAiaml0dGVyIikKYGBgCgpUaGlzIGlzIGFuIGluZm9ybWF0aXZlIHBsb3QhCgotLS0KCi0gV2Ugb2JzZXJ2ZWQgYW4gZWZmZWN0IG9mIHRoZSB0cmFuc3BsYW50YXRpb24gb24gdGhlIHJlbGF0aXZlIGFidW5kYW5jZSBvZiBTdGFwaHlsb2NvY2N1cy4KCi0gT24gYXZlcmFnZSB0aGUgcmVsYXRpdmUgcmVsYXRpdmUgYWJ1bmRhbmNlIG9mIFN0YXBoeWxvY29jY3VzIGlzIGByIGFwUmVsU3VtICU+JSBwdWxsKG1lYW4pICU+JSBkaWZmICU+JSByb3VuZCgxKWAlIGhpZ2hlciBpbiB0aGUgdHJhbnNwbGFudCBncm91cCB0aGFuIGluIHRoZSBwbGFjZWJvIGdyb3VwLiAKCmBgYHtyfQphcFJlbFN1bSAlPiUgCiAgcHVsbChtZWFuKSAlPiUgCiAgZGlmZiAlPiUgCiAgcm91bmQoMSkKYGBgCgotIElzIHRoYXQgZWZmZWN0IGxhcmdlIGVub3VnaCB0byBjb25jbHVkZSB0aGF0IHRoZSB0cmVhdG1lbnQgd29ya3M/CgotLS0KCiMjIEVzdGltYXRpb24gYW5kIHN0YXRpc3RpY2FsIGluZmVyZW5jZQoKLSBJbmR1Y3Rpb246IFdpdGggc3RhdGlzdGljYWwgaW5mZXJlbmNlIHdlIGNhbiBnZW5lcmFsaXplIHdoYXQgd2Ugb2JzZXJ2ZSBpbiB0aGUgc2FtcGxlIHRvd2FyZHMgdGhlIHBvcHVsYXRpb24uCgotIFRoZSBwcmljZSB0aGF0IHdlIGhhdmUgdG8gcGF5OiB1bmNlcnRhaW50eSBvbiBvdXIgY29uY2x1c2lvbnMhCgotIEluZGVlZCwgd2UgY291bGQgbm90IGFzc2VzcyB0aGUgZWZmZWN0IG9mIHRoZSB0cmVhdG1lbnQgaW4gdGhlIGVudGlyZSBwb3B1bGF0aW9uIGJ1dCBvbmx5IG9uIGEgc21hbGwgc3Vic2V0IG9mIHRoZSBwb3B1bGF0aW9uCgotIFNvIGlmIHdlIHdvdWxkIHJlcGVhdCB0aGUgZXhwZXJpbWVudCBhZ2FpbiAKICAgICAgICAKICAgIC0gd2Ugd2lsbCBzZWxlY3QgZGlmZmVyZW50IHBlb3BsZSBhdCByYW5kb20gZnJvbSB0aGUgcG9wdWxhdGlvbgogICAgLSB0aGUgb2JzZXJ2ZWQgcmVsYXRpdmUgYWJ1bmRhbmNlcyB3aWxsIGJlIHNsaWdodGx5IGRpZmZlcmVudAogICAgLSB0aGUgZ3JvdXAgbWVhbnMgd2lsbCBiZSBzbGlnaHRseSBkaWZmZXJlbnQgCiAgICAtIGFuZCB0aGF0IG1pZ2h0IHJlc3VsdCBpbiBkaWZmZXJlbnQgY29uY2x1c2lvbnMuIAogICAgCi0gV2l0aCBzdGF0aXN0aWNzIHdlIHdpbGwgY29udHJvbCB0aGUgcHJvYmFiaWxpdHkgdG8gbWFrZSBmYWxzZSBwb3NpdGl2ZSBjb25jbHVzaW9ucwoKLSBXaXRoIGV4cGVyaW1lbnRhbCBkZXNpZ24gd2UgY2FuIGRldGVybWluZSB0aGUgcG93ZXIgdG8gcGljayB1cCBhbiBlZmZlY3Qgd2l0aCBhIGNlcnRhaW4gbWluaW11bSBlZmZlY3Qgc2l6ZQoKLS0tCgpGYWxzaWZpY2F0aW9uIHByaW5jaXBsZSBvZiBQb3BwZXIKCi0gV2l0aCBkYXRhIHdlIGNhbm5vdCBwcm92ZSB0aGF0IHRoZSB0cmVhdG1lbnQgd29ya3MKCi0gV2l0aCBkYXRhIHdlIGNhbiBvbmx5ICByZWplY3QgYSBoeXBvdGhlc2lzIG9yIHRoZW9yeS4KCi0gV2l0aCBzdGF0cyB3ZSBjYW4gdGh1cyBub3QgcHJvdmUgdGhhdCB0aGUgdHJlYXRtZW50IHdvcmtzLgoKLSBCdXQgc3RhdHMgd2lsbCBhbGxvdyB1cyB0byBmYWxjaWZ5IHRoZSBvcHBvc2l0ZSBoeXBvdGhlc2lzOiBob3cgbXVjaCBldmlkZW5jZSBpcyB0aGVyZSBpbiB0aGUgZGF0YSBhZ2FpbnN0IHRoZSBhc3N1bXB0aW9uIHRoYXQgdGhlcmUgaXMgbm8gZWZmZWN0IG9mIHRoZSB0cmVhdG1lbnQ/CgotLS0KCklmIHRoZXJlIGlzIG5vIGVmZmVjdCBvZiB0aGUgdHJlYXRtZW50CgotIHRoZW4gdGhlIHJlbGF0aXZlIGFidW5kYW5jZSB3b3VsZCBmb2xsb3cgdGhlIHNhbWUgZGlzdHJpYnV0aW9uIGluIGJvdGggdHJlYXRtZW50IGFybXMgCgotIHdlIGNvdWxkIHRodXMgaGF2ZSBvYnNlcnZlZCBlYWNoIG9ic2VydmF0aW9uIGluIG9uZSBvZiB0aGUgZ3JvdXBzLiAKCi0gU28gdW5kZXIgdGhlIG51bGwgaHlwb3RoZXNpcyBvZiBubyBlZmZlY3Qgd2UgY2FuIHBlcm11dGUgdGhlIGdyb3VwIGxhYmVscy4gCgpgYGB7cn0KYXBQZXJtIDwtIGFwICU+JSBtdXRhdGUodHJ0PXNhbXBsZSh0cnQpKQphcFBlcm0gJT4lIGdncGxvdChhZXMoeCA9IHRydCwgeSA9IHJlbCkpICsKICBnZW9tX2JveHBsb3Qob3V0bGllci5zaGFwZSA9IE5BKSArCiAgZ2VvbV9wb2ludChwb3NpdGlvbiA9ICJqaXR0ZXIiKQoKYXBSZWxTdW1QZXJtIDwtIGFwUGVybSAlPiUKICBncm91cF9ieSh0cnQpICU+JQogIHN1bW1hcml6ZSgKICAgIG1lYW4gPSBtZWFuKHJlbCwgbmEucm0gPSBUUlVFKSwKICAgIHNkID0gc2QocmVsLCBuYS5ybSA9IFRSVUUpLAogICAgbiA9IG4oKQogICkgJT4lCiAgbXV0YXRlKHNlID0gc2QgLyBzcXJ0KG4pKQoKYXBSZWxTdW1QZXJtCmFwUmVsU3VtUGVybSAlPiUgcHVsbChtZWFuKSAlPiUgZGlmZgpgYGAKCldlIGNhbiByZXBlYXQgdGhpcyBhZ2Fpbi4gCgpgYGB7cn0KYXBQZXJtIDwtIGFwICU+JSBtdXRhdGUodHJ0PXNhbXBsZSh0cnQpKQphcFBlcm0gJT4lIGdncGxvdChhZXMoeCA9IHRydCwgeSA9IHJlbCkpICsKICBnZW9tX2JveHBsb3Qob3V0bGllci5zaGFwZSA9IE5BKSArCiAgZ2VvbV9wb2ludChwb3NpdGlvbiA9ICJqaXR0ZXIiKQoKYXBSZWxTdW1QZXJtIDwtIGFwUGVybSAlPiUKICBncm91cF9ieSh0cnQpICU+JQogIHN1bW1hcml6ZSgKICAgIG1lYW4gPSBtZWFuKHJlbCwgbmEucm0gPSBUUlVFKSwKICAgIHNkID0gc2QocmVsLCBuYS5ybSA9IFRSVUUpLAogICAgbiA9IG4oKQogICkgJT4lCiAgbXV0YXRlKHNlID0gc2QgLyBzcXJ0KG4pKQoKYXBSZWxTdW1QZXJtCmFwUmVsU3VtUGVybSAlPiUgcHVsbChtZWFuKSAlPiUgZGlmZgpgYGAKCi0gSWYgd2UgZG8gdGhhdCBtYW55IHRpbWVzIHdlIGNhbiBlc3RpbWF0ZSB0aGUgZGlzdHJpYnV0aW9uIG9mIGF2ZXJhZ2UgZGlmZmVyZW5jZSBpbiByZWxhdGl2ZSBhYnVuZGFuY2UgYmV0d2VlbiBib3RoIHRyZWF0bWVudCBncm91cHMgdW5kZXIgdGhlIGFzc3VtcHRpb24gdGhhdCB0aGVyZSBpcyBubyBlZmZlY3Qgb2YgdGhlIHRyZWF0bWVudCBvbiB0aGUgcmVsYXRpdmUgYWJ1bmRhbmNlIG9mIHN0YXBoeWxvY29jY3VzCgotIGkuZS4gdW5kZXIgdGhlIGFzc3VtcHRpb24gdGhhdCB0aGUgcmVsYXRpdmUgYWJ1bmRhbmNlcyBmb2xsb3cgdGhlIHNhbWUgZGlzdHJpYnV0aW9uIGluIGJvdGggZ3JvdXBzCgpgYGB7cn0Kc2V0LnNlZWQoMTAyNSkKblBlcm0gPC0gMTAwMDAKZGlmZiA8LSB0U3RhdFBlcm0gPC0gYXJyYXkoTkEsblBlcm0pCmZvciAoaSBpbiAxOm5QZXJtKQp7CiAgICBhcFBlcm0gPC0gYXAgJT4lIG11dGF0ZSh0cnQ9c2FtcGxlKHRydCkpCiAgICBhcFJlbFN1bVBlcm0gIDwtIGFwUGVybSAlPiUgZ3JvdXBfYnkodHJ0KSAlPiUKICBzdW1tYXJpemUoCiAgICBtZWFuID0gbWVhbihyZWwsIG5hLnJtID0gVFJVRSksCiAgICBzZCA9IHNkKHJlbCwgbmEucm0gPSBUUlVFKSwKICAgIG4gPSBuKCkKICApCiAgICBkaWZmW2ldIDwtIGFwUmVsU3VtUGVybSAlPiUgcHVsbChtZWFuKSAlPiUgZGlmZgogICAgc2VEaWZmIDwtIHNxcnQoc3VtKChhcFJlbFN1bVBlcm0kc2ReMiooYXBSZWxTdW1QZXJtJG4tMSkpKS9zdW0oYXBSZWxTdW1QZXJtJG4tMSkpKnNxcnQoc3VtKDEvYXBSZWxTdW1QZXJtJG4pKQogICAgdFN0YXRQZXJtW2ldIDwtIGRpZmZbaV0vc2VEaWZmCn0KYGBgCgpgYGB7cn0KcXBsb3QoZGlmZixnZW9tPSJoaXN0b2dyYW0iLCBiaW5zPTUwKSArCiAgICBnZW9tX3ZsaW5lKHhpbnRlcmNlcHQ9IGFwUmVsU3VtICU+JSBwdWxsKG1lYW4pICU+JSBkaWZmKQptZWFuKGFicyhkaWZmKSA+PSBhYnMoYXBSZWxTdW0gJT4lIHB1bGwobWVhbikgJT4lIGRpZmYpKQpgYGAKLSBUaGUgcGVybXV0YXRpb25zIHNob3cgdGhhdCBpdCBpcyB2ZXJ5IHVubGlrZWx5IHRvIG9ic2VydmUgYSBkaWZmZXJlbmNlIGluIHJlbGF0aXZlIGFidW5kYW5jZSBvZiBhdCBsZWFzdCBgciBhcFJlbFN1bSAlPiUgcHVsbChtZWFuKSAlPiUgZGlmZiAlPiUgcm91bmQoMSlgIGJ5IHJhbmRvbSBjaGFuY2UgaWYgdGhlaXIgd291bGQgYmUgbm8gZWZmZWN0IG9mIHRoZSB0cmVhdG1lbnQuIAoKLSBPbmx5IGluIGByIG1lYW4oYWJzKGRpZmYpID49IGFicyhhcFJlbFN1bSAlPiUgcHVsbChtZWFuKSAlPiUgZGlmZikpICogblBlcm1gIG91dCBvZiBgciBuUGVybWAgcGVybXV0YXRpb25zIHdlIG9ic2VydmUgYSBkaWZmZXJlbmNlIHRoYXQgaXMgYXQgbGVhc3QgYXMgaGlnaCBhcyB3aGF0IHdlIG9ic2VydmVkIGluIG91ciBzYW1wbGUuIAoKLSBTbyBpdCBpcyB2ZXJ5IHVubGlrZWx5IHRvIG9ic2VydmUgb3VyIGRhdGFzZXQgdW5kZXIgdGhlIGh5cG90aGVzaXMgdGhhdCB0aGVpciBpcyBubyBlZmZlY3Qgb2YgdGhlIHRyZWF0bWVudC4gCgotIFdlIGNhbiB0aHVzIGNvbmNsdWRlIHRoYXQgdGhlcmUgaXMgYW4gZWZmZWN0IG9mIHRoZSB0cmFuc3BsYW50YXRpb24gdHJlYXRtZW50IG9uIHRoZSByZWxhdGl2ZSBhYnVuZGFuY2Ugb2Ygc3RhcGh5bG9jb2NjdXMgaW4gdGhlIGFybXBpdCBtaWNyb2Jpb21lLiAKCi0gSW4gc3RhdGlzdGljcyB3ZSB0eXBpY2FsbHkgZG8gbm90IG9ubHkgbG9vayBhdCB0aGUgZWZmZWN0IHNpemU6IGF2ZXJhZ2UgZGlmZmVyZW5jZSBpbiByZWxhdGl2ZSBhYnVuZGFuY2UgYmV0d2VlbiB0cmFuc3BsYW50IGFuZCB0cmVhdG1lbnQgZ3JvdXAKCi0gQnV0IHdlIGdlbmVyYWxseSBiYWxhbmNlIHRoZSBlZmZlY3Qgc2l6ZSB0byBpdHMgc3RhbmRhcmQgZXJyb3IsIHdoaWNoIGlzIGEgbWVhc3VyZSBmb3IgdGhlIHVuY2VydGFpbnR5IG9mIHRoZSBlZmZlY3Qgc2l6ZSBlc3RpbWF0ZS4KCiQkClQgPSBcZnJhY3tcaGF0XERlbHRhfXtcdGV4dHtzZX1fe1xoYXRcRGVsdGF9fT1cZnJhY3tcYmFyIFlfdCAtIFxiYXIgWV9wfXtcdGV4dHtzZX1fe1xiYXIgWV90IC0gXGJhciBZX3B9fQokJAoKV2UgY2FuIGFnYWluIGxvb2sgYXQgdGhlIHBlcm11dGF0aW9uIGRpc3RyaWJ1dGlvbiBvZiB0aGlzIHQtdGVzdCBzdGF0aXN0aWM6IAoKYGBge3J9CmRhdGFfZnJhbWUodFN0YXRQZXJtPXRTdGF0UGVybSkgJT4lCiAgICBnZ3Bsb3QoYWVzKHg9dFN0YXRQZXJtKSkgKwogICAgZ2VvbV9oaXN0b2dyYW0oYWVzKHk9Li5kZW5zaXR5Li4pLGJpbnM9NTApICsKICAgIHN0YXRfZnVuY3Rpb24oZnVuID0gZHQsIGFyZ3M9bGlzdChkZj1zdW0oYXBSZWxTdW0kbi0xKSksIAogICAgICAgICAgICAgIGFlcyhjb2xvdXIgPSAnU3R1ZGVudCB0JyksIGx3ZD0xKQpgYGAKCi0gSWYgd2UgY29tcGFyZSBpdCB3aXRoIGEgc3RhbmRhcmQgdC1kaXN0cmlidXRpb24gd2l0aCBgciBzdW0oYXBSZWxTdW0kbi0xKWAgZGVncmVlcyBvZiBmcmVlZG9tIHdlIG9ic2VydmUgdGhhdCB0aGUgcGVybXV0YXRpb24gZGlzdHJpYnV0aW9uIG5pY2VseSBmb2xsb3dzIGEgdC1kaXN0cmlidXRpb24uIAoKLSBUaGlzIGlzIGJlY2F1c2UgdGhlIGRhdGEgYXJlIGFwcHJveGltYXRlbHkgTm9ybWFsbHkgZGlzdHJpYnV0ZWQgYW5kIGJlY2F1c2UgdGhlIHZhcmlhbmNlIGluIHRoZSB0d28gZ3JvdXBzIChqPSAxLCAyKSBhcmUgZXF1YWwsIGkuZS4gCgokJApZX3tpan0gXHNpbSBOKFxtdV9qLFxzaWdtYV4yKQokJApXaGljaCB3ZSBjb3VsZCB2ZXJpZnkgdXNpbmcgdGhlIGJveHBsb3QgYW5kIHFxcGxvdHMKCmBgYHtyfQphcCAlPiUKICBnZ3Bsb3QoYWVzKHggPSB0cnQsIHkgPSByZWwpKSArCiAgZ2VvbV9ib3hwbG90KG91dGxpZXIuc2hhcGUgPSBOQSkgKwogIGdlb21fcG9pbnQocG9zaXRpb24gPSAiaml0dGVyIikKCmFwICU+JSBnZ3Bsb3QoYWVzKHNhbXBsZSA9IHJlbCkpICsKICBnZW9tX3FxKCkgKwogIGdlb21fcXFfbGluZSgpICsKICBmYWNldF93cmFwKH50cnQpCmBgYAoKLSBOb3RlLCB0aGF0IHVuZGVyIHRoZXNlIGFzc3VtcHRpb25zIHRoZSBkaXN0cmlidXRpb24gb2YgdGhlIHR3byBncm91cHMgY2FuIG9ubHkgZGlmZmVyIGFjY29yZGluZyB0byB0aGUgZ3JvdXAgbWVhbi4gIAoKLSBTbyB3ZSBjYW4gaW50ZXJwcmV0IHRoZSBudWxsIGFuZCBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzIGluIHRlcm1zIG9mIGEgZGlmZmVyZW5jZSBpbiBncm91cCBtZWFucy4KCiQkCkhfMDogXG11XzE9ClxtdV8yIApcdGV4dHsgdnMgfSBIXzE6IFxtdV8xIFxuZXEgXG11XzIKJCQKCmFuZCB3ZSBjYW4gY2FsY3VsYXRlIHRoZSBwcm9iYWJpbGl0eSAKCi0gdG8gb2JzZXJ2ZSBhbiBhdmVyYWdlIGRpZmZlcmVuY2UgaW4gcmVsYXRpdmUgYWJ1bmRhbmNlIG9mIFN0YXBoeWxvY29jY3VzIGJldHdlZW4gdGhlIHBsYWNlYm8gYW5kIHRoZSB0cmFuc3BsYW50IGdyb3VwIAotIGluIGEgcmFuZG9tIGV4cGVyaW1lbnQgb2YgdGhlIHNhbWUgc2l6ZSBhcyBvdXJzIAotIHVuZGVyIG51bGwgaHlwb3RoZXNpcyB0aGF0IHRoZXJlIGlzIG9uIG5vIGVmZmVjdCBvZiB0aGUgdHJlYXRtZW50IHRyZWF0bWVudCB1c2luZyBhIHR3byBzYW1wbGUgdC10ZXN0LiAKCmBgYHtyfQp0LnRlc3QocmVsfnRydCxhcCx2YXIuZXF1YWw9VFJVRSkKYGBgClNvIGlmIHdlIHdvdWxkIHJlcGVhdCBvdXIgZXhwZXJpbWVudCBvbmUgbWlsbGlvbiB0aW1lcyB3ZSBjYW4gZXhwZWN0IGluIGFib3V0IGByICByb3VuZCh0LnRlc3QocmVsfnRydCxhcCx2YXIuZXF1YWw9VFJVRSkkcC52YWx1ZSAqIDFlNiwwKWAgZXhwZXJpbWVudHMgYW4gYXZlcmFnZSBkaWZmZXJlbmNlIGluIHJlbGF0aXZlIGFidW5kYW5jZSBvZiBzdGFwaHlsb2NvY2N1cyBiZXR3ZWVuIHRoZSB0cmFuc3BsYW50IGFuZCBwbGFjZWJvIGdyb3VwIHRoYXQgaXMgbGFyZ2VyIGByIGFwUmVsU3VtICU+JSBwdWxsKG1lYW4pICU+JSBkaWZmICU+JSByb3VuZCgxKWAlIGJ5IHJhbmRvbSBjaGFuZ2UgdW5kZXIgdGhlIGFzc3VtcHRpb25zIHRoYXQgCgotIHRoZXJlIGlzIG5vIGVmZmVjdCBvZiB0aGUgdHJlYXRtZW50IAotIHRoZSBkYXRhIGFyZSBub3JtYWxseSBkaXN0cmlidXRlZAotIHRoZSBkYXRhIGluIGJvdGggZ3JvdXBzIGhhdmUgdGhlIHNhbWUgdmFyaWFuY2UKClRoaXMgc2hvd3MgdGhhdCBpdCBpcyBleHRyZW1lbHkgdW5saWtlbHkgdG8gb2JzZXJ2ZSBhbiBlZmZlY3Qgc2l6ZSBhcyBsYXJnZSBhcyB3aGF0IHdlIG9ic2VydmVkIGluIG91ciBzYW1wbGUgYnkgcmFuZG9tIGNoYW5nZSBpbiBhbiBleHBlcmltZW50IGxpa2Ugb3VycyBpZiB0aGVpciB3b3VsZCBiZSBubyBlZmZlY3Qgb2YgdGhlIHRyZWF0bWVudC4gCgpCZWNhdXNlIHdlIGRpZCB0aGUgYXNzdW1wdGlvbiB0aGF0IHRoZSBkYXRhIGFyZSBub3JtYWxseSBkaXN0cmlidXRlZCBpbiBib3RoIGdyb3VwcyBhbmQgaGF2ZSB0aGUgc2FtZSB2YXJpYW5jZSwgd2UgY2FuIGNvbmNsdWRlIGFib3V0IHRoZSBlZmZlY3QgaW4gdGVybXMgb2YgYSBkaWZmZXJlbmNlIGluIG1lYW5zIGJldHdlZW4gYm90aCBncm91cHMhIAoKLSBOb3RlLCB0aGF0IHdlIHR5cGljYWxseSAgcmVmZXIgdG8gdGhpcyBwcm9iYWJpbGl0eSBhcyBgcC12YWx1ZWAgCgotIEFuZCB0aGF0IHdlIHR5cGljYWxseSByZWplY3QgJEhfMCQgaWYgJHA8XGFscGhhJCB3aXRoICRcYWxwaGEkIHRoZSBzaWduaWZpY2FuY2UgbGV2ZWwuIAotIFdlIG9mdGVuIHVzZSAkXGFscGhhID0gMC4wNSQgc28gd2UgdG9sZXJhdGUgYSA1JSBwcm9iYWJpbGl0eSBvbiBtYWtpbmcgYSBmYWxzZSBwb3NpdGl2ZSBjb25jbHVzaW9uLCBpLmUuIHRvIGNvbmNsdWRlIHRoYXQgdGhlcmUgaXMgYW4gZWZmZWN0IG9mIHRoZSB0cmVhdG1lbnQgd2hpbGUgdGhpcyBpcyBub3QgdGhlIGNhc2UuCgotIFRoaXMgaXMgYWxzbyByZWZlcnJlZCB0byBhcyB0aGUgY29udHJvbCBvZiB0aGUgVHlwZSBJIGVycm9yIChmYWxzZSBwb3NpdGl2ZSBjb25jbHVzaW9uKSAgYXQgdGhlIDUlLWxldmVsLgoKLSBXZSBjYW4gbm93IGZvcm11bGF0ZSBvdXIgY29uY2x1c2lvbgoKIyMgQ29uY2x1c2lvbgoKVGhlIHJlbGF0aXZlIGFidW5kYW5jZSBvZiBTdGFwaHlsb2NvY2N1cyBpbiB0aGUgbWljcm9iaW9tZSBvZiBpbmRpdmlkdWFscyB3aXRoIHNtZWxseSBhcm1waXRzICBpcyBgciBmb3JtYXQoYXBSZWxTdW0kbWVhblsyXS1hcFJlbFN1bSRtZWFuWzFdLGRpZ2l0cz0zKWAlIGhpZ2hlciB1cG9uIHRoZSB0cmFuc3BsYW50IHRoYW4gdXBvbiB0aGUgcGxhY2VibyB0cmVhdG1lbnQgKHAgPDwgMC4wMDEpLgoK</div>
+<div class="footer">
+    <hr>
+    This work is licensed under the <a href= "https://creativecommons.org/licenses/by-nc-sa/4.0">
+    CC BY-NC-SA 4.0</a> licence.
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("01-intro.Rmd");
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
