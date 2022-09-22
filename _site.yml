@@ -1,26 +1,20 @@
-name: "my-website"
+name: "ESVCP22"
 navbar:
-  title: "My Website"
+  title: "ESVCP Pre-Congress Session"
   left:
     - icon: fa-home
       href: index.html
-    - text: "About"
-      href: about.html
     - text: "Lectures"
       icon: fa-chalkboard-teacher
       menu:
-        - text: "Example"
-          href: example.html
-    - text: "Labs"
-      icon: fa-laptop
-      menu:
-      - text: "Lab 1"
-        href:
-      - text: "Lab 2"
-        href:
+        - text: "01-Intro"
+          href: 01-intro.html
+        - text: "02-Rank Tests"
+          href: 02-ranktests.html
+  
   right:
     - icon: fab fa-github
-      href: https://github.com/statOmics/Rmd-website
+      href: https://github.com/statOmics/ESVCP22
     - text: "statOmics"
       href: http://statomics.github.io/
 output:
