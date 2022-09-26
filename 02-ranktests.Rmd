@@ -118,12 +118,13 @@ Rank tests start from rank-transformed data.
 - Smallest observation has rank 1, second smallest rank 2, ... , largest observation gets rank $n$
 
 ```{r}
-chol %>% 
-    pull(cholest)
-chol %>% 
-    pull(cholest) %>% 
-    rank
+chol <- chol %>% 
+  mutate(ranks = rank(cholest))
+chol
 ```
+
+
+Note, that we calculate the ranks for the pooled sample!
 
 ---
 
@@ -144,16 +145,6 @@ rank(withTies)
    R_i &=& \frac{ \#\{Y_j: Y_j\leq Y_i\} + ( \#\{Y_j: Y_j < Y_i\} +1)}{2}.
    \end{eqnarray*}
 
----
-
-## Ranks of pooled sample
-
-- Let $Y_{ij}$, $i=1,\ldots, n_j$ be observations from two treatment groups $j=1,2$.
-- They can also be represented by $Z_1,\ldots, Z_n$ ($n=n_1+n_2$), the outcomes of the pooled sample
-
-```{r}
-chol %>% mutate(ranks = rank(cholest))
-```
 ---
 
 # Wilcoxon-Mann-Whitney Test
@@ -338,7 +329,7 @@ probInd <- wTest$statistic / prod(nGroups)
 probInd
 ```
 
-Because $p=$ `r format(wTest$p.value,digits=3)` $<0.05$ we conclude at the $5\%$ significance level that the mean cholesterol level of hart patients is larger then that of healthy subjects.
+Because $p=$ `r format(wTest$p.value,digits=3)` $<0.05$ we conclude at the $5\%$ significance level that the median cholesterol level of hart patients is larger then that of healthy subjects.
 
   - Note that we have assumed that the location-shift model is valid in this conclusion.
   - We also know that higher cholesterol level are more likely for hart patients then for healthy subjects and this probability is

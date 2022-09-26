@@ -146,84 +146,14 @@ apRelSum
 We will use ggplot2 to make our plots.
 With the ggplot2 library we can easily build plots by adding layers.
 
-#### barplot
-
-1. We pipe our summarized data to the `ggplot` function and we select the treatment variable trt and the variable mean for plotting `aes(x=trt,y=mean)`
-
-2. We make a barplot based on this data using the `geom_bar` function. The statistic is `stat="identity"` because the bar height should be equal the value for the mean of the relative abundance.
-
-```{r}
-apRelSum %>%
-  ggplot(aes(x = trt, y = mean)) +
-  geom_bar(stat = "identity")
-```
-
-- Is this plot informative??
-
----
-
-We will now add standard errors to the plot
-using `geom_errorbar` function and specify the minimum and maximum value for of the error bar, the width command is used to set the width of the error bar smaller than the width of the bar.
-
-```{r}
-apRelSum %>%
-  ggplot(aes(x = trt, y = mean)) +
-  geom_bar(stat = "identity") +
-  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = .2)
-```
-
-- Is this plot informative??
-
----
-
-#### boxplots
-
-I consider barplots to be bad plots
-
-- They are not informative
-- They just visualize a two point summary of the data. It is better to do this in a table
-- They use a lot of space (e.g. from zero up to the minimum relative abundance) where no data are present.
-
-It is better to get a view on the distribution of the data. We can use a boxplot for this purpose.
-We first explain what a boxplot.
-
----
-
-```{r fig.align='center',echo=FALSE}
-fem <- NHANES::NHANES %>%
-  filter(Gender == "female" & !is.na(DirectChol)) %>%
-  select(DirectChol)
-boxplot(fem$DirectChol, ylab = "Direct cholesterol", cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
-rangeCl <- quantile(fem$DirectChol, c(.25, .75)) + c(-1, 1) * diff(quantile(fem$DirectChol, c(.25, .75))) * 1.5
-boxYs <- c(range(fem$DirectChol[fem$DirectChol <= rangeCl[2] & fem$DirectChol >= rangeCl[1]]), quantile(fem$DirectChol, c(.25, .5, .75)), rangeCl[2] + (max(fem$DirectChol) - rangeCl[2]) / 2)
-text(1.3, boxYs, labels = c("wisker", "wisker", "x25", "median", "x75", "outliers"), pos = 4, cex = 1.3)
-lines(c(1.1, 1.3, 1.3, 1.1), c(rangeCl[2], rangeCl[2] + (max(fem$DirectChol) - rangeCl[2]) / 2, rangeCl[2] + (max(fem$DirectChol) - rangeCl[2]) / 2, max(fem$DirectChol)), lty = 2)
-```
-
 ---
 
 We will now make a boxplot for the ap data
 
 1. We pipe the `ap` dataframe to the ggplot command
 2. We select the data with the command `ggplot(aes(x=trt,y=rel))`
-3. We add a boxplot with the command `geom_boxplot()`
-
-```{r}
-ap %>%
-  ggplot(aes(x = trt, y = rel)) +
-  geom_boxplot()
-```
-
----
-
-- Note, that we do not have so many observations.
-
-- It is always better to show the data as raw as possible!
-
-We will now add the raw data to the plot.
-
-- Note that we set the outlier.shape=NA in the geom_boxplot function because because we will add all raw data anyway.
-- We add the raw data using `geom_point(position="jitter")`, with the argument position='jitter' we will add some random noise to the x coordinate so that we can see all data.
+3. We add a boxplot with the command `geom_boxplot(outlier.shape = NA)`. We use the argument `outlier.shape = NA` because we will also add the raw data to the plot and otherwise outliers will be shown twice
+4. We add the raw data using geom_point(position="jitter"), with the argument position=‘jitter’ we will add some random noise to the x coordinate so that we can see all data.
 
 ```{r}
 ap %>%
@@ -232,7 +162,11 @@ ap %>%
   geom_point(position = "jitter")
 ```
 
-This is an informative plot!
+---
+
+- Note, that we do not have so many observations.
+
+- It is always better to show the data as raw as possible!
 
 ---
 
