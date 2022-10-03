@@ -387,31 +387,39 @@ Because we did the assumption that the data are normally distributed in both gro
 The relative abundance of Staphylococcus in the microbiome of individuals with smelly armpits  is `r format(apRelSum$mean[2]-apRelSum$mean[1],digits=3)`% higher upon the transplant than upon the placebo treatment (p << 0.001).
 
 
-# t and z-statistics. 
+# t and z-statistics 
 
-Note, that we often use t-statistics or z-statistics, which are signal to noise ratio's. 
+Note, that we often use t-statistics or z-statistics, which are signal to noise ratio's.
 
-## Linear regression 
-
-$$ y_i = \beta_0 + \beta_1 x_i + \epsilon_i$$
-
-when $\epsilon_i \sim N(0,\sigma^2)$
-
-$$ t = \frac{
-\hat \beta_1
-}{\text{se}_{\hat{\beta}_1}}
-$$
-
-which follows a t-distribution with $n-2$ DF if the variance has to be estimated from the data. 
+$$t = \frac{\text{effect size}}{\text{se}_\text{effect size}}$$
 
 ## Critical difference
 
-Assumptions under the null hypothesis
+Do sequential laboratory results $(Y_1, Y_2)$ of a patient indicate that there is a true change in measured characteristic of the patient ($H_1: \mu_1 \neq \mu_2$)? 
 
-$$Y_1, Y_2 \stackrel{i.i.d.}{\sim} N(\mu, \sigma^2)$$
+We can assess that with a z-statistic that quantifies the signal to noise ratio
+
+$$ z =  \frac{Y_2-Y_1}{\text{se}_{Y_2-Y_1}} $$
+
+Under the null hypothesis 
+$$H_0: \mu_1 = \mu_2 = \mu$$
+Upon making the additional assumptions that the measurements are 
+
+- independent
+- normally distributed 
+- with the same variance $\sigma^2$ 
+
+we know the distribution of $Y_1, Y_2$ under $H_0$:
+
+$$Y_1, Y_2 \stackrel{H_0}{\sim} N(\mu, \sigma^2)$$
+
+and that: 
+
+$$ z =  \frac{Y_2-Y_1}{\text{se}_{Y_2-Y_1}}=\frac{Y_2-Y_1}{\sqrt{2  \sigma^2}} \stackrel{H_0}{\sim} N(0,1)$$
+
+If we know the analytical and within patient coefficient of variation 
+
 $$\frac{\sigma}{\mu} = \sqrt{CV_a^2 + CV_i^2}$$
-$$ z =  \frac{Y_2-Y_1}{\text{se}_{Y_2-Y_1}}=\frac{Y_2-Y_1}{\sqrt{2  \sigma^2}}=\frac{Y_2-Y_1}{ \sqrt{2} \mu\sqrt{CV^2_a+CV^2_i}} \stackrel{H_0}{\sim} N(0,1)$$
-If $\mu$, $CV^2_a$ and $CV^2_i$ are known. 
-
+$$ z =  \frac{Y_2-Y_1}{ \sqrt{2} \mu\sqrt{CV^2_a+CV^2_i}} \stackrel{H_0}{\sim} N(0,1)$$
 If $\mu$ is unknown it is often replaced by $Y_1$. 
 
