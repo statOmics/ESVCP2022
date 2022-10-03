@@ -322,12 +322,15 @@ data_frame(tStatPerm=tStatPerm) %>%
 
 - If we compare it with a standard t-distribution with `r sum(apRelSum$n-1)` degrees of freedom we observe that the permutation distribution nicely follows a t-distribution. 
 
-- This is because the data are approximately Normally distributed and because the variance in the two groups (j= 1, 2) are equal, i.e. 
+- This is because the data are approximately Normally distributed and because the variance in the two groups (j= 1, 2) are equal, i.e.
+
 
 $$
 Y_{ij} \sim N(\mu_j,\sigma^2)
 $$
-Which we could verify using the boxplot and qqplots
+and because the standard deviation is unknown and has to be estimated based on the data. Then the t-statistic follows a t-distribution with $n_1 + n_2 -2$ degrees of freedom because we had to estimate the two sample means to estimate the standard deviation of the original observations.  
+
+We could verify the distributional assumptions using the boxplot and qqplots
 
 ```{r}
 ap %>%
@@ -382,4 +385,33 @@ Because we did the assumption that the data are normally distributed in both gro
 ## Conclusion
 
 The relative abundance of Staphylococcus in the microbiome of individuals with smelly armpits  is `r format(apRelSum$mean[2]-apRelSum$mean[1],digits=3)`% higher upon the transplant than upon the placebo treatment (p << 0.001).
+
+
+# t and z-statistics. 
+
+Note, that we often use t-statistics or z-statistics, which are signal to noise ratio's. 
+
+## Linear regression 
+
+$$ y_i = \beta_0 + \beta_1 x_i + \epsilon_i$$
+
+when $\epsilon_i \sim N(0,\sigma^2)$
+
+$$ t = \frac{
+\hat \beta_1
+}{\text{se}_{\hat{\beta}_1}}
+$$
+
+which follows a t-distribution with $n-2$ DF if the variance has to be estimated from the data. 
+
+## Critical difference
+
+Assumptions under the null hypothesis
+
+$$Y_1, Y_2 \stackrel{i.i.d.}{\sim} N(\mu, \sigma^2)$$
+$$\frac{\sigma}{\mu} = \sqrt{CV_a^2 + CV_i^2}$$
+$$ z =  \frac{Y_2-Y_1}{\text{se}_{Y_2-Y_1}}=\frac{Y_2-Y_1}{\sqrt{2  \sigma^2}}=\frac{Y_2-Y_1}{ \sqrt{2} \mu\sqrt{CV^2_a+CV^2_i}} \stackrel{H_0}{\sim} N(0,1)$$
+If $\mu$, $CV^2_a$ and $CV^2_i$ are known. 
+
+If $\mu$ is unknown it is often replaced by $Y_1$. 
 
