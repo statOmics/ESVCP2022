@@ -14,7 +14,7 @@ navbar:
   
   right:
     - icon: fab fa-github
-      href: https://github.com/statOmics/ESVCP22
+      href: https://github.com/statOmics/ESVCP2022
     - text: "statOmics"
       href: http://statomics.github.io/
 output:
