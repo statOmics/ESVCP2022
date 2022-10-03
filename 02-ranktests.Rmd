@@ -77,11 +77,11 @@ $$
 H_0: f_1(x)=f_2(x)
 $$
 
-- Problem if we can reject the null hypothesis that their is an effect of the treatment, how can we interpret how the difference between both distributions? 
+- Problem if use a t-statistic and its permutation distribution and we can reject the null hypothesis that their is no effect of the treatment, how can we interpret and report on the difference between both distributions? 
 
-- In order enable an useful interpretation if we use an permutation t-test, we have to make additional assumptions: 
+- To enable an useful interpretation for the permutation t-test, we have to make additional assumptions: 
 
-- location shift model: we assume that the distributions have the same shape but that the treatment can only induce a shift in the location of the distribution:
+- location shift model: we assume that the distributions have the same shape and that the treatment can only induce a shift in the location of the distribution:
 
 $$ 
 H_0: f_1(x)=f_2(x) \text{ vs } H_1: \{\forall y: f_1(y)=f_2(y-\Delta)\}
@@ -102,7 +102,6 @@ $$
 - Important group of non-parametric test
   - Non-parametric,
   - Exact $p$-values using a permutation null distribution.
-  - No need for separate permutation distribution for each new dataset.
   - Permutation null distribution of rank tests only depends on sample size
   - Robust to outliers
 
@@ -397,10 +396,6 @@ dna %>%
 - Strong indication that data in control group has a lower variance.
 - 6 observations per group are too few to check the assumptions
 
-```{r}
-plot(lm(length ~ dose, data = dna))
-```
-
 # Kruskal-Wallis Rank Test
 
 - The Kruskal-Wallis Rank Test (KW-test) is a  non-parameteric alternative  for ANOVA F-test.
@@ -437,7 +432,7 @@ plot(lm(length ~ dose, data = dna))
 -  The exact KW-test can be executed by calculating the permutation null distribution (that only depends on $n_1, \ldots, n_g$) to test
   $$H_0: f_1=\ldots=f_g \text{ vs } H_1: \text{ at least two means are different}.$$
 
-- In order to allow $H_1$ to be formulated in terms of means, the assumption of locations shift should be valid.
+- In order to allow $H_1$ to be formulated in terms of medians, the assumption of locations shift should be valid.
 - For DMH example this is not the case.
 - If location-shift is invalid, we have to formulate $H_1$ in terms of probabilistic indices:
   $$H_0: f_1=\ldots=f_g \text{ vs } H_1: \exists\ j,k \in \{1,\ldots,g\} : \text{P}\left[Y_j\geq Y_k\right]\neq 0.5$$
@@ -466,7 +461,7 @@ kwPerm <- kruskal_test(length ~ dose,
 kwPerm
 ```
 
-- We conclude that the difference in the distribution of the DNA damages due to the DMH dose is extremely significantly different.
+- We conclude that the DHM dose has an extremely significant effect on the distribution of the DNA damages.
 
 - Posthoc analysis with WMW tests.
 
@@ -496,11 +491,11 @@ Because there are doubts on the location-shift model we draw our conclusions in 
 
 ### Conclusion
 
-- There is an extremely significant difference in in the distribution of the DNA-damage measurements due to the treatment with DMH  ($p<0.001$ KW-test).
-- DNA-damage is more likely upon DMH treatment than in the control treatment (all p=0.013, WMW-testen).
-- The probability on higher DNA-damage upon exposure to DMH is 100% (Calculation of a CI on the probabilistic index is beyond the scope of the course)
+- There is an extremely significant effect of the DMH dose on the distribution of the DNA-damage measurements  ($p<0.001$ KW-test).
+- DNA-damage is more likely upon DMH treatment than in the control treatment (all p=0.013, WMW-tests).
+- The probability on higher DNA-damage upon exposure to DMH is 100% (Calculation of a CI on the probabilistic index is beyond the scope of this lecture)
 - There are no significant differences in the distributions of the comit-lengths among the treatment with the different DMH concentrations ($p=$ `r paste(format(range(pairWilcox$p.value[,-1],na.rm=TRUE),digit=2),collapse="-")`).
-- DMH shows already genotoxic effects at low dose.
+- DMH shows already genotoxic effects at the low dose.
 - (All pairwise tests are corrected for multiple testing using Holm's method).
 
 # Probabilistic index models (PIM)
